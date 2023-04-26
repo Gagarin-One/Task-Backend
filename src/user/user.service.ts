@@ -18,7 +18,7 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.repository.find()
   }
 
   async findOne(id: number) {

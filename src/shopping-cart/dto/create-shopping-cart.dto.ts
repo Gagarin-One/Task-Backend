@@ -2,9 +2,9 @@ import { IsNotEmpty } from "class-validator"
 import { ProductEntity } from "src/products/entities/product.entity"
 
 export class CreateShoppingCartDto {
-  @IsNotEmpty()
-  userId: number
+  quantity: number
 
-  products:number
+  @IsNotEmpty()
+  user:number
 
 }

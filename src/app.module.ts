@@ -8,7 +8,7 @@ import { ProductEntity } from './products/entities/product.entity';
 import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { OrderModule } from './order/order.module';
-import { ShoppingCartEntity } from './shopping-cart/entities/shopping-cart.entity';
+import { CartEntity } from './shopping-cart/entities/shopping-cart.entity';
 import { OrderEntity } from './order/entities/order.entity';
 
 @Module({
@@ -20,7 +20,7 @@ import { OrderEntity } from './order/entities/order.entity';
     username: 'postgres',
     password: 'Miha1052003',
     database: 'socnet',
-    entities: [UserEntity, ProductEntity,ShoppingCartEntity,OrderEntity],
+    entities: [UserEntity, ProductEntity,CartEntity,OrderEntity],
     synchronize: true,
   }),
    UserModule,

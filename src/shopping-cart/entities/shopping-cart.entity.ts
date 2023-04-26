@@ -3,18 +3,23 @@ import { UserEntity } from 'src/user/entities/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 
 
-@Entity('shoppingCart')
-export class ShoppingCartEntity {
-  @PrimaryGeneratedColumn()
+@Entity('cart')
+export class CartEntity {
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @ManyToOne(()=>UserEntity, {nullable:false})
-  @JoinColumn({name:'userId'})
-  user: UserEntity
+  @Column()
+  total:number
 
   @Column()
-  product: number
+  quantity: number;
 
-  @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
-  createdAt:Date
+  @ManyToOne(type => ProductEntity, product=> product.id)
+  @JoinColumn()
+  item: ProductEntity
+
+  @ManyToOne(type => UserEntity, user => user.id)
+  @JoinColumn()
+  user: UserEntity
+
 }
