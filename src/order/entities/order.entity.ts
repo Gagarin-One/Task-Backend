@@ -19,9 +19,9 @@ export class OrderEntity {
   user: UserEntity;
 
 
-@ManyToMany(() => ProductEntity)
-@JoinTable()
-products: ProductEntity[]
+  @ManyToMany(() => ProductEntity)
+  @JoinTable()
+  products: ProductEntity[]
 
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
   createdAt:Date

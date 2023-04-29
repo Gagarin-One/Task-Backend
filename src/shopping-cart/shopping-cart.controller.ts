@@ -8,23 +8,13 @@ export class ShoppingCartController {
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
 
   @Post()
-  create(@Body() createShoppingCartDto: CreateShoppingCartDto) {
-    return this.shoppingCartService.create(createShoppingCartDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.shoppingCartService.findAll();
+  create(@Body() dto: CreateShoppingCartDto) {
+    return this.shoppingCartService.create(dto);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.shoppingCartService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateShoppingCartDto: UpdateShoppingCartDto) {
-    return this.shoppingCartService.update(+id, updateShoppingCartDto);
+  findCartsById(@Param('id') id: string) {
+    return this.shoppingCartService.getCarts(+id);
   }
 
   @Delete(':id')

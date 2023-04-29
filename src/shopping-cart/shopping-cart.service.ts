@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateShoppingCartDto } from './dto/create-shopping-cart.dto';
@@ -13,23 +13,25 @@ export class ShoppingCartService {
     private repository: Repository<CartEntity>
   ){}
 
-  create(createShoppingCartDto: CreateShoppingCartDto) {
-    return 'This action adds a new shoppingCart';
+  create(dto: CreateShoppingCartDto) {
+    return this.repository.save(dto)
   }
 
-  findAll() {
-    return this.repository.find();
+  async getCarts(id: number){
+    const qb = this.repository.createQueryBuilder('p')
+
+
+    id && qb.andWhere(`p.userId ILIKE :id`)
+
+    qb.setParameters({
+      userId:id
+    })
+    const [items,total] = await qb.getManyAndCount()
+    return {items,total}
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} shoppingCart`;
-  }
-
-  update(id: number, updateShoppingCartDto: UpdateShoppingCartDto) {
-    return `This action updates a #${id} shoppingCart`;
-  }
 
   remove(id: number) {
-    return `This action removes a #${id} shoppingCart`;
+    return this.repository.delete(id);
   }
 }

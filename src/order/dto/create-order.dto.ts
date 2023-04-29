@@ -4,6 +4,8 @@ import { UserEntity } from "src/user/entities/user.entity";
 export class CreateOrderDto {
 
   id: number;
-  user:number;
+  title: string;
+  total: number;
+  userId:number;
   createdAt: Date;
 }

@@ -17,7 +17,7 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
-  @Get('/search')
+  @Get('/category')
   findByCategory(@Query() dto: CreateProductDto) {
     return this.productsService.search(dto);
   }

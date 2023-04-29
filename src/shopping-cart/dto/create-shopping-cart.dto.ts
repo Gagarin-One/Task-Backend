@@ -5,6 +5,11 @@ export class CreateShoppingCartDto {
   quantity: number
 
   @IsNotEmpty()
-  user:number
+  userId:number
+
+  total:number
+
+  @IsNotEmpty()
+  productId:number
 
 }
