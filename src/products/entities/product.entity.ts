@@ -1,10 +1,11 @@
+import { OrderEntity } from 'src/order/entities/order.entity';
 import { CartEntity } from 'src/shopping-cart/entities/shopping-cart.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, JoinTable, ManyToMany } from 'typeorm';
 
 
 @Entity('products')
 export class ProductEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
@@ -22,7 +23,5 @@ export class ProductEntity {
   @Column()
   category: string;
 
-  @OneToMany(type => CartEntity, cart => cart.id)
-  @JoinColumn()
-  cart: CartEntity[];
+
 }

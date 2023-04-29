@@ -14,12 +14,12 @@ export class CartEntity {
   @Column()
   quantity: number;
 
-  @ManyToOne(type => ProductEntity, product=> product.id)
-  @JoinColumn()
-  item: ProductEntity
+  @ManyToOne(() => ProductEntity)
+  @JoinColumn({name:'productId'})
+  product: ProductEntity
 
-  @ManyToOne(type => UserEntity, user => user.id)
-  @JoinColumn()
+  @ManyToOne(() => UserEntity)
+  @JoinColumn({name:'userId'})
   user: UserEntity
 
 }
