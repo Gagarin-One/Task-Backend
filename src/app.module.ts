@@ -10,6 +10,9 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { OrderModule } from './order/order.module';
 import { CartEntity } from './shopping-cart/entities/shopping-cart.entity';
 import { OrderEntity } from './order/entities/order.entity';
+import { AuthModule } from './auth/auth.module';
+
+
 
 @Module({
   imports: [
@@ -26,7 +29,8 @@ import { OrderEntity } from './order/entities/order.entity';
    UserModule,
    ProductsModule,
    ShoppingCartModule,
-   OrderModule],
+   OrderModule,
+   AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
