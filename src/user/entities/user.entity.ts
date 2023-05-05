@@ -1,7 +1,12 @@
 import { CartEntity } from 'src/shopping-cart/entities/shopping-cart.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import { OrderEntity } from '../../order/entities/order.entity';
-
 
 @Entity('users')
 export class UserEntity {
@@ -11,18 +16,19 @@ export class UserEntity {
   @Column()
   userName: string;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   email: string;
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   password?: string;
 
-
-  @OneToMany(type=>CartEntity, cart => cart.id)
+  @OneToMany((type) => CartEntity, (cart) => cart.id)
   @JoinColumn()
-  cart: CartEntity[]
+  cart: CartEntity[];
 
-  @OneToMany(type=>OrderEntity, order => order.id)
+  @OneToMany((type) => OrderEntity, (order) => order.id)
   @JoinColumn()
-  order: OrderEntity[]
+  order: OrderEntity[];
 }
